@@ -6,7 +6,26 @@
 /* Importing Datepicker SCSS file. */
 @import "~ngx-bootstrap/datepicker/bs-datepicker";
 
+/* Importing Bootswatch Theme file. */
+@import "~bootswatch/dist/united/bootstrap";
+
 /* Importing the Font-Awesome file. */
 @import "~font-awesome/css/font-awesome.min.css";
 
+/* Importing the NGX Toastr file. */
 @import "~ngx-toastr/toastr.css";
+
+.xng-breadcrumb-root {
+    padding: 8px 16px;
+    display: inline;
+    border-radius: 0;
+}
+
+label.xng-breadcrumb-trail {
+    margin-bottom: 0;
+    color: orange;
+}
+
+.xng-breadcrumb-separator {
+    padding: 0 0;
+}
