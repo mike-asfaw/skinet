@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Core.Entities;
+using Core.Entities.OrderAggregate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -65,6 +66,25 @@ namespace Infrastructure.Data
                     }
 
                     await context.SaveChangesAsync();
+                }
+
+                if (!context.DeliveryMethods.Any())
+                {
+                    using (var transaction = context.Database.BeginTransaction())
+                    {
+                        var dmData = File.ReadAllText("../Infrastructure/Data/SeedData/delivery.json");
+                        var methods = JsonSerializer.Deserialize<List<DeliveryMethod>>(dmData);
+
+                        foreach (var item in methods)
+                        {
+                            context.DeliveryMethods.Add(item);
+                        }
+
+                        await context.Database.ExecuteSqlInterpolatedAsync($"SET IDENTITY_INSERT dbo.DeliveryMethods ON");
+                        await context.SaveChangesAsync();
+                        await context.Database.ExecuteSqlInterpolatedAsync($"SET IDENTITY_INSERT dbo.DeliveryMethods OFF");
+                        transaction.Commit();
+                    }
                 }
             }
             catch (Exception ex)
