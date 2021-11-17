@@ -23,8 +23,8 @@ export class CheckoutDeliveryComponent implements OnInit {
       (dm: IDeliveryMethod[]) => {
         this.deliveryMethods = dm;
       },
-      (err) => {
-        console.error(err);
+      (error) => {
+        console.log(error);
       }
     );
   }
