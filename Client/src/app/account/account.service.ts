@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { IUser } from '../shared/models/user';
 import { IAddress } from '../shared/models/address';
+import { IUser } from '../shared/models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -17,8 +17,8 @@ export class AccountService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  loadCurrentUser(token: string): Observable<any> {
-    if (token === null) {
+  loadCurrentUser(token: string): Observable<void> {
+    if (token == null) {
       this.currentUserSource.next(null);
       return of(null);
     }
@@ -64,8 +64,8 @@ export class AccountService {
     this.router.navigateByUrl('/');
   }
 
-  checkEmailExists(email: string): Observable<boolean> {
-    return this.http.get<boolean>(
+  checkEmailExists(email: string): Observable<IUser> {
+    return this.http.get<IUser>(
       this.baseUrl + 'account/emailexists?email=' + email
     );
   }

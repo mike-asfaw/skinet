@@ -22,6 +22,7 @@ currentUser$: Observable<IUser>;
   }
 
   logout(): void {
+    this.basketService.deleteLocalBasket();
     this.accountService.logout();
   }
 }

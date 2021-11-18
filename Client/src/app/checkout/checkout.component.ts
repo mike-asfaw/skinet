@@ -53,8 +53,8 @@ export class CheckoutComponent implements OnInit {
           this.checkoutForm.get('addressForm').patchValue(address);
         }
       },
-      (error) => {
-        console.log(error);
+      (err) => {
+        console.error(err);
       }
     );
   }

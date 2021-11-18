@@ -111,7 +111,7 @@ export class BasketService {
     }
   }
 
-  deleteLocalBasket(id: string): void {
+  deleteLocalBasket(): void {
     this.basketSource.next(null);
     this.basketTotalSource.next(null);
     localStorage.removeItem('basket_id');
@@ -120,9 +120,7 @@ export class BasketService {
   deleteBasket(basket: IBasket): Subscription {
     return this.http.delete(this.baseUrl + 'basket?id=' + basket.id).subscribe(
       () => {
-        this.basketSource.next(null);
-        this.basketTotalSource.next(null);
-        localStorage.removeItem('basket_id');
+        this.deleteLocalBasket();
       },
       (error) => {
         console.log(error);

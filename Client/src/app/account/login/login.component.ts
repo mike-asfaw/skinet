@@ -20,28 +20,27 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.returnUrl =
-      this.activatedRoute.snapshot.queryParams.returnUrl || '/shop';
+      this.activatedRoute.snapshot.queryParams.returnUrl || '';
     this.createLoginForm();
   }
 
   createLoginForm(): void {
     this.loginForm = new FormGroup({
-      email: new FormControl('', [
+      email: new FormControl('bob@test.com', [
         Validators.required,
         Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$'),
       ]),
-      password: new FormControl('', Validators.required),
+      password: new FormControl('Pa$$w0rd', Validators.required),
     });
   }
 
   onSubmit(): void {
-    console.log(this.loginForm.value);
     this.accountService.login(this.loginForm.value).subscribe(
       () => {
         this.router.navigateByUrl(this.returnUrl);
       },
       (err) => {
-        console.log(err);
+        console.error(err);
       }
     );
   }
