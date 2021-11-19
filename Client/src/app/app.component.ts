@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
         console.log('loaded user');
       },
       (err) => {
-        console.error(err);
+        console.log(err);
       }
     );
   }

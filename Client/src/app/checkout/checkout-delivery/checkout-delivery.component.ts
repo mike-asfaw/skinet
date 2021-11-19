@@ -24,7 +24,7 @@ export class CheckoutDeliveryComponent implements OnInit {
         this.deliveryMethods = dm;
       },
       (err) => {
-        console.error(err);
+        console.log(err);
       }
     );
   }

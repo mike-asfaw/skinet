@@ -54,7 +54,7 @@ export class CheckoutComponent implements OnInit {
         }
       },
       (err) => {
-        console.error(err);
+        console.log(err);
       }
     );
   }

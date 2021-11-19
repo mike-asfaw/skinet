@@ -7,12 +7,13 @@ import { map } from 'rxjs/operators';
 import { ShopParams } from '../shared/models/shopParams';
 import { IProduct } from '../shared/models/product';
 import { Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ShopService {
-  baseUrl = 'https://localhost:5001/api/';
+  baseUrl = environment.apiUrl;
   products: IProduct[] = [];
   brands: IBrand[] = [];
   types: IType[] = [];
@@ -80,7 +81,6 @@ export class ShopService {
   getProduct(id: number): Observable<IProduct> {
     let product: IProduct;
     this.productCache.forEach((products: IProduct[]) => {
-      console.log(product);
       product = products.find((p) => p.id === id);
     });
 

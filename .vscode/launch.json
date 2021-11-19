@@ -16,11 +16,17 @@
             "webRoot": "${workspaceFolder}"
         },
         {
+            "name": "Attach to Microsoft Edge and open the Edge DevTools",
             "type": "vscode-edge-devtools.debug",
             "request": "attach",
-            "name": "Attach to Microsoft Edge and open the Edge DevTools",
             "url": "https://localhost:4200/",
             "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Launch Microsoft Edge and open the Edge DevTools",
+            "request": "launch",
+            "type": "vscode-edge-devtools.debug",
+            "url": "https://localhost:4200/" // Provide your project's url to finish configuring
         },
         {
             "name": ".NET Core Launch (web)",
@@ -46,12 +52,6 @@
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach"
-        },
-        {
-            "name": "Launch Microsoft Edge and open the Edge DevTools",
-            "request": "launch",
-            "type": "vscode-edge-devtools.debug",
-            "url": "https://localhost:4200/" // Provide your project's url to finish configuring
         }
     ]
 }

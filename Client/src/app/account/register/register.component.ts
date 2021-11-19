@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
         this.router.navigateByUrl('/shop');
       },
       (err) => {
-        console.error(err);
+        console.log(err);
         this.errors = err.errors;
       }
     );

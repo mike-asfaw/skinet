@@ -1,4 +1,6 @@
 obj
 bin
+wwwroot
+publish
 appsettings.json
 .vscode/settings.json

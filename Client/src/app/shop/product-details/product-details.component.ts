@@ -50,7 +50,7 @@ export class ProductDetailsComponent implements OnInit {
           this.bcService.set('@productDetails', this.product.name);
         },
         (err) => {
-          console.error(err);
+          console.log(err);
         }
       );
   }

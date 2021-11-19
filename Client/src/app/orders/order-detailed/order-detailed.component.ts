@@ -32,7 +32,7 @@ export class OrderDetailedComponent implements OnInit {
           );
         },
         (err) => {
-          console.error(err);
+          console.log(err);
         }
       );
   }
